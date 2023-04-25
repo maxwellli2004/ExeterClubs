@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ExeterClubs Calendar</title>
+    <style>
+      /* Add some basic styles for the top bar menu */
+      .top-bar {
+        background-color: rgb(136, 0, 0);
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+      }
+
+      /* Style the logo in the top bar menu */
+      .top-bar .logo {
+        float: left;
+        padding: 10px;
+        font-size: 24px;
+        color: white;
+        font-weight: bold;
+      }
+
+      /* Style the buttons in the top bar menu */
+      .top-bar .menu {
+        float: right;
+        padding: 15px 10px 10px 10px;
+      }
+
+      .top-bar .menu a {
+        color: white;
+        font-size: 16px;
+        padding: 14px 16px;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      /* Change the color of the button when it's hovered over */
+      .top-bar .menu a:hover {
+        background-color: #111;
+      }
+
+      /* Add styles for the menu button */
+      .top-bar .menu-button {
+        display: block;
+        float: left;
+        padding: 7px 10px 10px 10px;
+        cursor: pointer;
+        color: white;
+        font-size: 24px;
+      }
+
+      /* Add styles for the sidebar */
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 30%;
+        height: 100%;
+        background-color: #f2f2f2;
+        z-index: 1;
+        overflow-x: hidden;
+        padding-top: 60px;
+        transition: 0.5s;
+        transform: translateX(-100%);
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 36px;
+      }
+
+      .sidebar a {
+        display: block;
+        color: #333;
+        padding: 16px;
+        font-size: 20px;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .sidebar a:hover {
+        background-color: #ddd;
+      }
+
+      .sidebar .close-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+
+      .sidebar input[type="text"] {
+        float: right;
+        padding: 6px;
+        border: none;
+        margin-top: 8px;
+        margin-right: 16px;
+        font-size: 17px;
+      }
+
+      /* Remove margin and padding from body */
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      ul {
+        list-style-type: none;
+      }
+      body {
+        font-family: Verdana, sans-serif;
+      }
+
+      /* Month header */
+      .month {
+        padding: 70px 25px;
+        width: 100%;
+        background: #1abc9c;
+        text-align: center;
+      }
+
+      /* Month list */
+      .month ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      .month ul li {
+        color: white;
+        font-size: 20px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+      }
+
+      /* Previous button inside month header */
+      .month .prev {
+        float: left;
+        padding-top: 10px;
+      }
+
+      /* Next button */
+      .month .next {
+        float: right;
+        padding-top: 10px;
+      }
+
+      /* Weekdays (Mon-Sun) */
+      .weekdays {
+        margin: 0;
+        padding: 10px 0;
+        background-color: #ddd;
+      }
+
+      .weekdays li {
+        display: inline-block;
+        width: 13.6%;
+        color: #666;
+        text-align: center;
+      }
+
+      /* Days (1-31) */
+      .days {
+        padding: 10px 0;
+        background: #eee;
+        margin: 0;
+      }
+
+      .days li {
+        list-style-type: none;
+        display: inline-block;
+        width: 13.6%;
+        text-align: center;
+        margin-bottom: 5px;
+        font-size: 12px;
+        color: #777;
+      }
+
+      /* Highlight the "current" day */
+      .days li .active {
+        padding: 5px;
+        background: #1abc9c;
+        color: white !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Add the top bar menu -->
+    <div class="top-bar">
+      <div class="menu-button" onclick="toggleSidebar()">&#9776;</div>
+      <div class="logo">ExeterClubs</div>
+      <div class="menu">
+        <a href="#">Settings</a>
+        <a href="#"> FAQ</a>
+        <a href="#">Contact</a>
+        <a href="#">Login with Outlook</a>
+      </div>
+    </div>
+
+    <!-- Add the sidebar -->
+    <div class="sidebar" id="sidebar">
+      <input type="text" placeholder="Search..." />
+      <a href="#" class="close-btn" onclick="toggleSidebar()">&times;</a>
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+      <a href="#">Link 4</a>
+    </div>
+
+    <!-- Add the overlay -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Add your calendar code here -->
+    <div class="month">
+      <ul>
+        <li class="prev">&#10094;</li>
+        <li class="next">&#10095;</li>
+        <li>August<br /><span style="font-size: 18px">2021</span></li>
+      </ul>
+    </div>
+
+    <ul class="weekdays">
+      <li>Mo</li>
+      <li>Tu</li>
+      <li>We</li>
+      <li>Th</li>
+      <li>Fr</li>
+      <li>Sa</li>
+      <li>Su</li>
+    </ul>
+
+    <ul class="days">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+      <li><span class="active">10</span></li>
+      <li>11</li>
+      <li>12</li>
+      <li>13</li>
+      <li>14</li>
+      <li>15</li>
+      <li>16</li>
+      <li>17</li>
+      <li>18</li>
+      <li>19</li>
+      <li>20</li>
+      <li>21</li>
+      <li>22</li>
+      <li>23</li>
+      <li>24</li>
+      <li>25</li>
+      <li>26</li>
+      <li>27</li>
+      <li>28</li>
+      <li>29</li>
+      <li>30</li>
+      <li>31</li>
+    </ul>
+
+    <!-- Add the JavaScript to toggle the sidebar -->
+    <script>
+      function toggleSidebar() {
+        document.getElementById("sidebar").classList.toggle("active");
+        document.getElementById("overlay").classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>
