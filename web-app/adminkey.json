@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "exeterclubs",
+  "private_key_id": "9c87e359be95678110f1db7b1b7c295e4b4ef02e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCvVNXMvtH9rAiL\nPaHjDTWyvEO3rnCKCUEvnNlZMi7DiySGMZsvP3hmNLQ5qcAhr0KNe6LKUFx4pmPZ\nWq8nb/l7ERtRQeLtNs2n2t1cQaQu56xYVjDU+QjL1wuZUYtvnyc4D6RTXJggQToG\nFlVRvk0KyaPaIahCnSCPtVGg71AapbkCop0qxwfljWPVMSAxySwnbHacCOEpwOmN\nrvd7hQxIvaMDi6k9bJGB8e6ClHdmSCbZppHNqz4tSNFzY+wZ4uL6KOQHcmRKQSwU\nZXT89Fnqkr3e3hya6hS5HYXJG6Fd/xNmsUIfqsKJOV2dIN2k18M1WaEVCfZkW8h1\nTwUdfwt9AgMBAAECggEAA5L/KMVbEojHQ89l1XMXfSVJXB06PhYiNg5EgAT93w6f\nF/065KOumKbKZcKIICeqe6fhka5BtFPwBSZMG8m0lEWtAOMO9TcAykMz8AWGi049\nvS9En5LUExO3MNDwvr3H1uS6vNhOYZnyzNz3sEro1yd1J6U4AOOjHkrb9yPpxiFC\nDoQwwPzpHg2RFLl2FyOzqPmMWa8z4RJA8b4wZjJ+wuXcyLsRK0mHyyIQu7HDKfGm\n7451diR36RRljMaZHfT0plhsXUCGAeTCuB1OlVm/Y8xX5RQTKqG9G/h3d1xGVoq3\nQ1GN/fBl72k0OBeA5w3G4/kh85A4zqCR8BaBC6ZZIQKBgQDpfPdoWM8/ySC8jjqh\nG1KUtMyyM9B0Os7a0VYostwJXXFaD1XxupWlQyLzi1jKu4645ea/Z32RxeHJbNqd\nGmpXQ8yt7IGZ3qsBi1JXtdOZJaKexJVCLIutI3S+h0bwZ3LVGquy4RtR95na2Hk6\nQWfd7ILnVCzuAhOtVNh59cU77wKBgQDAPGx+8RL4mNgf8KGlS8XEiictj2VY8+bw\n2BsUdVO/+DVaFfaApAv8NsmkBI0jhotF3UEo5QrJ/97c4PN8HPdHoXXAg8bG5Chx\npjIFxkxMvI7WyEdF+/3hIBZ9tZ3yVuu0taMzXYcIXasUJgyfEOlkLsZC0U8qVDir\nGLa1qiQzUwKBgQDkbPHPEDOR/78bOTp6qzRbb5ZjMPXbAD2nLe3Q20sRjm164k3+\ns7/7cncbNVSk4mF62tCoqSLcHnAKk4g88r7eqOHxtdQFKSa72AWy8ZwV1BAIq+Iq\nX1I3DN0GGWp5f3uEqRcZZclIo6fNxsKzD5ICN4TJtDxQjY+an8s5ZgyT2QKBgQCI\nGL8/R/GEasFoK3ZljjWfpaeDC+hWh6bSkEzruPzoBhPPiYkRHhMWJruvEUHTCugD\nOFdvWmi/BhWEDwaSsfcnkVnKSAEswk8X1u/HQtK16TC/Qt+i3nqpLYx+x1vhPER3\nlbjLHsYA2D/Mbfu1icWSlcLrf0Aq2aGdEEwaZTBn3QKBgHup6K+gIMRp1ELmZ5v8\nHIQBUkmZu7KHcZkyqYhUDjFULcCLrFQYZ07pbL9GRh0+QPowGhOrNR2bZR7Rbj+a\nEiKHvcaER+WyvKNteJqSe8KNtDG2l6vXd/uK6hrsBAmlEG/7Vbywp++XuGqWMPyq\nogxvzZgI3aShC5/J9tSxJK7u\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-3inwv@exeterclubs.iam.gserviceaccount.com",
+  "client_id": "109936161046902419232",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-3inwv%40exeterclubs.iam.gserviceaccount.com"
+}

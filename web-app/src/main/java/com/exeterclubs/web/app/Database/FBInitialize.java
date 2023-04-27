@@ -13,7 +13,7 @@ public class FBInitialize {
   public void initialize() {
       try {
 
-          FileInputStream serviceAccount = new FileInputStream("path/to/serviceAccountKey.json");
+          FileInputStream serviceAccount = new FileInputStream("./adminkey.json");
 
           FirebaseOptions options = new FirebaseOptions.Builder()
                                             .setCredentials(GoogleCredentials.fromStream(serviceAccount))
