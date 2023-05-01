@@ -1,4 +1,5 @@
 package com.exeterclubs.web.app.Controllers;
+
 import com.exeterclubs.web.app.Models.*;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
@@ -11,18 +12,19 @@ import java.util.ArrayList;
 
 @Service
 public class UserController {
-    private final static Firestore DBFIRESTORE = FirestoreClient.getFirestore();
     public static final String COL_NAME="users";
     
     // Creates a new user in the database
     public static String create(User user) throws InterruptedException, ExecutionException {
-        ApiFuture<WriteResult> collectionsApiFuture = DBFIRESTORE.collection(COL_NAME).document(user.getId().toString()).set(user);
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection(COL_NAME).document(user.getId().toString()).set(user);
         System.out.println("Created user: " + user.getId().toString() + " succesfully.");
         return collectionsApiFuture.get().getUpdateTime().toString();
     }
 
     public static void read() throws InterruptedException, ExecutionException {
-        CollectionReference collectionReference = DBFIRESTORE.collection(COL_NAME);
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        CollectionReference collectionReference = dbFirestore.collection(COL_NAME);
         ApiFuture<QuerySnapshot> future = collectionReference.get();
         QuerySnapshot querySnapshot = future.get();
         List<User> users = querySnapshot.toObjects(User.class);

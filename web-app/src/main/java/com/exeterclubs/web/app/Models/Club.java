@@ -21,7 +21,7 @@ public class Club {
         //this.meetingTimes = meetingTimes;
         this.id = id;
     }
-	`
+	
 	/*
 	TODO: Implement 
 
