@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 
 import java.util.UUID;
 
-// Creates routes (web url handlers) with different inputs and models to pass data to view
+/// Creates routes (web url handlers) with different inputs and models to pass data to view
 @Controller
 public class ApplicationController {
     @GetMapping("/exampleindex")
@@ -17,23 +17,8 @@ public class ApplicationController {
     }
 
     @GetMapping("/example")
-	public String example(Model model, @RequestParam(value="name", defaultValue="Example Page") String name) {
+	public String example(Model model) {
         model.addAttribute("title", name);
         return "example";
-    }
-
-    @GetMapping("/example/users/new")
-    public String newUser(Model model, @RequestParam(value="email", defaultValue = "1234@1234.com") String email) {
-
-        User user = new User("trevor@piltch.com", "1234", UUID.randomUUID(), false);
-
-        try {
-            UserController.savePatientDetails(user);
-        }
-        catch(Exception e) {
-            System.out.println(e);
-        }
-
-        return "user";
     }
 }
