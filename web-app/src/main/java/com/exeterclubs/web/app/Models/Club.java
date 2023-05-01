@@ -1,3 +1,5 @@
+package com.exeterclubs.web.app.Models;
+
 import java.util.UUID;
 import java.util.Optional;
 
@@ -20,10 +22,14 @@ public class Club {
         this.id = id;
     }
 	
+	/*
+	TODO: Implement 
+
 	public static UUID findClub() {
 		//check database for club
 		
 	}
+
 	public static UUID findClub() {
 		//check database for approved club
 	}
@@ -39,4 +45,5 @@ public class Club {
 	public User removeUser(User user) {
 		//remove user from db
 	}
+	*/
 }
