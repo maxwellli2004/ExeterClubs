@@ -17,17 +17,19 @@
       .top-bar .logo {
         float: left;
         padding: 10px;
+        padding-top: 15px;
         font-size: 24px;
         color: white;
         font-weight: bold;
       }
 
-      /* style  buttons in the top bar menu */
+      /* style buttons in the top bar menu */
       .top-bar .menu {
         float: right;
         padding: 15px 10px 10px 10px;
       }
 
+      /*style of tag*/
       .top-bar .menu a {
         color: white;
         font-size: 16px;
@@ -41,11 +43,11 @@
         background-color: #111;
       }
 
-      /* add styles for  menu button */
+      /* add styles for menu button */
       .top-bar .menu-button {
         display: block;
         float: left;
-        padding: 7px 10px 10px 10px;
+        padding: 12.5px 10px 10px 10px;
         cursor: pointer;
         color: white;
         font-size: 24px;
@@ -99,8 +101,8 @@
       }
 
       .sidebar input[type="text"] {
-        float: right;
         padding: 6px;
+        padding-left: 18px;
         border: none;
         margin-top: 8px;
         margin-right: 16px;
@@ -194,7 +196,7 @@
       * {
         box-sizing: border-box;
       }
-      /* full-width input fields */
+      /* full-width input fields for modal */
       input[type="text"],
       input[type="password"] {
         width: 100%;
@@ -212,36 +214,31 @@
         outline: none;
       }
 
-      /* style for all buttons */
-      button {
+      /* style for signup button */
+      .signUpButton {
         background-color: #04aa6d;
         color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
         cursor: pointer;
-        width: 100%;
         opacity: 0.9;
+        padding: 10px;
       }
 
       button:hover {
         opacity: 1;
       }
 
-      /* extra styles for  cancel button */
+      /*styles for cancel button IN THE MODAL*/
       .cancelbtn {
-        padding: 14px 20px;
-        background-color: #f44336;
-      }
-
-      /* float cancel and signup buttons and add an equal width */
-      .cancelbtn,
-      .signupbtn {
         float: left;
-        width: 50%;
+        margin-right: 1%;
       }
 
-      /* padding to container elements */
+      /* float cancel button IN THE MODAL*/
+      .signupbtn {
+        float: right;
+      }
+
+      /* padding to container overall elements within the modal */
       .container {
         padding: 16px;
       }
@@ -304,6 +301,58 @@
           width: 100%;
         }
       }
+      #myInput {
+        background-image: url("/css/searchicon.png"); /* Add a search icon to input */
+        background-position: 10px 12px; /* Position the search icon */
+        background-repeat: no-repeat; /* Do not repeat the icon image */
+        width: 100%; /* Full-width */
+        font-size: 16px; /* Increase font-size */
+        padding: 12px 20px 12px 40px; /* Add some padding */
+        border: 1px solid #ddd; /* Add a grey border */
+        margin-bottom: 12px; /* Add some space below the input */
+      }
+
+      #myUL {
+        /* Remove default list styling */
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      #myUL li a {
+        border: 1px solid #ddd; /* Add a border to all links */
+        margin-top: -1px; /* Prevent double borders */
+        background-color: #f6f6f6; /* Grey background color */
+        padding: 12px; /* Add some padding */
+        text-decoration: none; /* Remove default text underline */
+        font-size: 18px; /* Increase the font-size */
+        color: black; /* Add a black text color */
+        display: block; /* Make it into a block element to fill the whole list */
+      }
+
+      #myUL li a:hover:not(.header) {
+        background-color: #eee; /* Add a hover effect to all links, except for headers */
+      }
+
+      .date {
+        margin-left: 1%;
+        margin-bottom: 1%;
+        background-color: #bc0101;
+        width: 12.8%;
+        height: 50px;
+        color: white;
+        cursor: pointer;
+      }
+
+      .datePopup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border: 1px solid black;
+        padding: 20px;
+      }
     </style>
   </head>
   <body>
@@ -315,9 +364,11 @@
         <a href="#">Settings</a>
         <a href="#"> FAQ</a>
         <a href="#">Contact</a>
-        <a href="#">Login with Outlook</a>
-        <!-- button to open  modal -->
-        <button onclick="document.getElementById('id01').style.display='block'">
+        <!-- button to open modal -->
+        <button
+          class="signUpButton"
+          onclick="document.getElementById('id01').style.display='block'"
+        >
           Sign Up
         </button>
       </div>
@@ -325,12 +376,24 @@
 
     <!-- sidebar -->
     <div class="sidebar" id="sidebar">
-      <input type="text" placeholder="Search..." />
       <a href="#" class="close-btn" onclick="toggleSidebar()">&times;</a>
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-      <a href="#">Link 4</a>
+      <div class="dropdown">
+        <input
+          type="text"
+          id="myInput"
+          onkeyup="dropDownFunction()"
+          placeholder="Search for names.."
+        />
+        <ul id="dropdownItems">
+          <li><a href="#">Asian Voices</a></li>
+          <li><a href="#">BSE</a></li>
+          <li><a href="#">Creating Club</a></li>
+          <li><a href="#">Democratic Club</a></li>
+          <li><a href="#">Dungeons and Dragons</a></li>
+          <li><a href="#">Fight club</a></li>
+          <li><a href="#">G</a></li>
+        </ul>
+      </div>
     </div>
 
     <!-- overlay -->
@@ -338,12 +401,6 @@
 
     <!-- modal (pop up) -->
     <div id="id01" class="modal">
-      <span
-        onclick="document.getElementById('id01').style.display='none'"
-        class="close"
-        title="Close Modal"
-        >&#9747</span
-      >
       <form class="modal-content" action="/action_page.php">
         <div class="container">
           <h1>Sign Up</h1>
@@ -402,7 +459,7 @@
       <ul>
         <li class="prev">&#10094;</li>
         <li class="next">&#10095;</li>
-        <li>August<br /><span style="font-size: 18px">2021</span></li>
+        <li>May<br /><span style="font-size: 18px">2023</span></li>
       </ul>
     </div>
 
@@ -416,38 +473,38 @@
       <li>Su</li>
     </ul>
 
-    <ul class="days">
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-      <li>4</li>
-      <li>5</li>
-      <li>6</li>
-      <li>7</li>
-      <li>8</li>
-      <li>9</li>
-      <li><span class="active">10</span></li>
-      <li>11</li>
-      <li>12</li>
-      <li>13</li>
-      <li>14</li>
-      <li>15</li>
-      <li>16</li>
-      <li>17</li>
-      <li>18</li>
-      <li>19</li>
-      <li>20</li>
-      <li>21</li>
-      <li>22</li>
-      <li>23</li>
-      <li>24</li>
-      <li>25</li>
-      <li>26</li>
-      <li>27</li>
-      <li>28</li>
-      <li>29</li>
-      <li>30</li>
-      <li>31</li>
+    <ul class="days" onclick="popUp()">
+      <button class="date">1</button>
+      <button class="date">2</button>
+      <button class="date">3</button>
+      <button class="date">4</button>
+      <button class="date">5</button>
+      <button class="date">6</button>
+      <button class="date">7</button>
+      <button class="date">8</button>
+      <button class="date">9</button>
+      <button class="date"><span class="active">10</span></button>
+      <button class="date">11</button>
+      <button class="date">12</button>
+      <button class="date">13</button>
+      <button class="date">14</button>
+      <button class="date">15</button>
+      <button class="date">16</button>
+      <button class="date">17</button>
+      <button class="date">18</button>
+      <button class="date">19</button>
+      <button class="date">20</button>
+      <button class="date">21</button>
+      <button class="date">22</button>
+      <button class="date">23</button>
+      <button class="date">24</button>
+      <button class="date">25</button>
+      <button class="date">26</button>
+      <button class="date">27</button>
+      <button class="date">28</button>
+      <button class="date">29</button>
+      <button class="date">30</button>
+      <button class="date">31</button>
     </ul>
 
     <!-- javascript -->
@@ -455,6 +512,32 @@
       function toggleSidebar() {
         document.getElementById("sidebar").classList.toggle("active");
         document.getElementById("overlay").classList.toggle("active");
+      }
+    </script>
+    <script>
+      function dropDownFunction() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("dropdownItems");
+        li = ul.getElementsByTagName("li");
+
+        // loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < li.length; i++) {
+          a = li[i].getElementsByTagName("a")[0];
+          txtValue = a.textContent || a.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+          } else {
+            li[i].style.display = "none";
+          }
+        }
+      }
+    </script>
+    <script>
+      function popUp() {
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
       }
     </script>
   </body>
