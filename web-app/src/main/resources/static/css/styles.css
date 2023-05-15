@@ -11,8 +11,7 @@
 /* style the logo in top bar menu */
 .top-bar .logo {
   float: left;
-  padding: 10px;
-  padding-top: 15px;
+  padding: 10px 10px 10px 5px;
   font-size: 24px;
   color: white;
   font-weight: bold;
@@ -22,7 +21,8 @@
 .top-bar .logo:hover,
 .logo:focus,
 .logo:active,
-.logo:visited {
+.logo:visited,
+.logo:link {
   color: white;
   text-decoration: none;
 }
@@ -51,7 +51,7 @@
 .top-bar .menu-button {
   display: block;
   float: left;
-  padding: 12.5px 10px 10px 10px;
+  padding: 17.25px 10px 10px 10px;
   cursor: pointer;
   color: white;
   font-size: 24px;
@@ -130,7 +130,7 @@ body {
 .month {
   padding: 70px 25px;
   width: 100%;
-  background: #1abc9c;
+  background: rgb(136, 0, 0);
   text-align: center;
 }
 

@@ -3,17 +3,19 @@ package com.exeterclubs.web.app.Models;
 import java.util.UUID;
 
 public class Club {
-	public boolean approved;
-	public String description;
-	public UUID[] heads;
-	public UUID[] members;
+	private String name;
+	private boolean approved;
+	private String description;
+	private UUID[] heads;
+	private UUID[] members;
 	//public Announcements[] announcements;
 	//public Date[] meetingTimes;
-	public UUID id;
+	private String id;
 	
 	public Club() { }
 
-	public Club(boolean approved, String description, UUID[] heads, UUID[] members, UUID id) {
+	public Club(String name, boolean approved, String description, UUID[] heads, UUID[] members, String id) {
+		this.name = name;
         this.approved = approved;
         this.description = description;
         this.heads = heads;
@@ -22,6 +24,14 @@ public class Club {
         //this.meetingTimes = meetingTimes;
         this.id = id;
     }
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 	// Getters and setters
 	public boolean getApproved() {
@@ -72,11 +82,11 @@ public class Club {
 		this.meetingTimes = meetingTimes;
 	}*/
 
-	public UUID getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

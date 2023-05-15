@@ -8,10 +8,12 @@
     <title>(Club Name) - Club Description</title>
   </head>
   <body>
-    <!-- top bar menu -->
+      <!-- top bar menu -->
     <div class="top-bar">
       <div class="menu-button" onclick="toggleSidebar()">&#9776;</div>
-      <div class="logo"><a href="./index.html">ExeterClubs</a></div>
+      <div class="logo">
+        <a class="logo" th:href="@{/}">ExeterClubs</a>
+      </div>
       <div class="menu">
         <a href="#">Settings</a>
         <a href="#"> FAQ</a>
@@ -26,8 +28,8 @@
       </div>
     </div>
 
-    <!-- sidebar -->
-    <div class="sidebar" id="sidebar">
+     <!-- sidebar -->
+     <div class="sidebar" id="sidebar">
       <a href="#" class="close-btn" onclick="toggleSidebar()">&times;</a>
       <div class="search-container">
         <input
@@ -38,46 +40,10 @@
         />
       </div>
       <ul id="dropdownItems">
-        <li>
+        <li th:each="club : ${clubs}">
           <label class="dropdownItem">
             <input type="checkbox" class="name-checkbox" />
-            <a href="./clubdesc.html">a</a>
-            <button class="openClub-button" onclick="openClub(this)">
-              &#8942;
-            </button>
-          </label>
-        </li>
-        <li>
-          <label class="dropdownItem">
-            <input type="checkbox" class="name-checkbox" />
-            <a href="./clubdesc.html">b</a>
-            <button class="openClub-button" onclick="openClub(this)">
-              &#8942;
-            </button>
-          </label>
-        </li>
-        <li>
-          <label class="dropdownItem">
-            <input type="checkbox" class="name-checkbox" />
-            <a href="./clubdesc.html">c</a>
-            <button class="openClub-button" onclick="openClub(this)">
-              &#8942;
-            </button>
-          </label>
-        </li>
-        <li>
-          <label class="dropdownItem">
-            <input type="checkbox" class="name-checkbox" />
-            <a href="./clubdesc.html">d</a>
-            <button class="openClub-button" onclick="openClub(this)">
-              &#8942;
-            </button>
-          </label>
-        </li>
-        <li>
-          <label class="dropdownItem">
-            <input type="checkbox" class="name-checkbox" />
-            <a href="./clubdesc.html">da</a>
+            <a th:href="@{/clubDetail/{id}(id=${club.id})}"><span th:text="${club.name}"></span></a>
             <button class="openClub-button" onclick="openClub(this)">
               &#8942;
             </button>
@@ -197,17 +163,17 @@
     <!-- actual description -->
     <div class="clubDescriptionDiv">
       <header>
-        <h1>(Club Name)</h1>
+        <h1><span th:text="${club.name}"></span></h1>
       </header>
       <main>
         <section class="club-description">
           <h2>Club Description</h2>
           <p>
-            Here is a brief description of our club, what we do, and what we're
-            all about.
+            <span th:text="${club.description}"></span>
           </p>
           <p>
             Contact us at
+            <!--Get Emails from club-->
             <a href="mailto:clubemail@exeter.edu">clubemail@exeter.edu</a> for
             more information.
           </p>

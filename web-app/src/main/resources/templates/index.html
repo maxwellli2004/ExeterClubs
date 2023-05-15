@@ -8,23 +8,25 @@
     <title>ExeterClubs Calendar</title>
   </head>
   <body>
-    <!-- top bar menu -->
-    <div class="top-bar">
-      <div class="menu-button" onclick="toggleSidebar()">&#9776;</div>
-      <div class="logo"><a href="./index.html">ExeterClubs</a></div>
-      <div class="menu">
-        <a href="#">Settings</a>
-        <a href="#"> FAQ</a>
-        <a href="#">Contact</a>
-        <!-- button to open modal -->
-        <button
-          class="signUpButton"
-          onclick="document.getElementById('id01').style.display='block'"
-        >
-          Sign Up
-        </button>
-      </div>
+ <!-- top bar menu -->
+  <div class="top-bar">
+    <div class="menu-button" onclick="toggleSidebar()">&#9776;</div>
+    <div class="logo">
+      <a class="logo" th:href="@{/}">ExeterClubs</a>
     </div>
+    <div class="menu">
+      <a href="#">Settings</a>
+      <a href="#"> FAQ</a>
+      <a href="#">Contact</a>
+      <!-- button to open modal -->
+      <button
+        class="signUpButton"
+        onclick="document.getElementById('id01').style.display='block'"
+      >
+        Sign Up
+      </button>
+    </div>
+  </div>
 
     <!-- sidebar -->
     <div class="sidebar" id="sidebar">
@@ -38,46 +40,10 @@
         />
       </div>
       <ul id="dropdownItems">
-        <li>
+        <li th:each="club : ${clubs}">
           <label class="dropdownItem">
             <input type="checkbox" class="name-checkbox" />
-            <a th:href="@{/clubdesc}">Club Example</a>
-            <button class="openClub-button" onclick="openClub(this)">
-              &#8942;
-            </button>
-          </label>
-        </li>
-        <li>
-          <label class="dropdownItem">
-            <input type="checkbox" class="name-checkbox" />
-            <a th:href="@{/clubdesc}">Club Example</a>
-            <button class="openClub-button" onclick="openClub(this)">
-              &#8942;
-            </button>
-          </label>
-        </li>
-        <li>
-          <label class="dropdownItem">
-            <input type="checkbox" class="name-checkbox" />
-            <a th:href="@{/clubdesc}">Club Example</a>
-            <button class="openClub-button" onclick="openClub(this)">
-              &#8942;
-            </button>
-          </label>
-        </li>
-        <li>
-          <label class="dropdownItem">
-            <input type="checkbox" class="name-checkbox" />
-            <a th:href="@{/clubdesc}">Club Example</a>
-            <button class="openClub-button" onclick="openClub(this)">
-              &#8942;
-            </button>
-          </label>
-        </li>
-        <li>
-          <label class="dropdownItem">
-            <input type="checkbox" class="name-checkbox" />
-            <a th:href="@{/clubdesc}">Club Example</a>
+            <a th:href="@{/clubDetail/{id}(id=${club.id})}"><span th:text="${club.name}"></span></a>
             <button class="openClub-button" onclick="openClub(this)">
               &#8942;
             </button>
