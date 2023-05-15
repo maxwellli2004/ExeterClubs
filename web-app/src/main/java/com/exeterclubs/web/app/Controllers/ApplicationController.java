@@ -66,7 +66,7 @@ public class ApplicationController {
         if (club != null) {
             model.addAttribute("club", club);
             model.addAttribute("clubs", ClubController.getAllClubs());
-            return "clubDetail";
+            return "clubdetail";
         }
 
         return "error";
