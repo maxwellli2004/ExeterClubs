@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-	implementation("com.google.firebase:firebase-admin:6.12.2")
+  	implementation("com.google.firebase:firebase-admin:9.1.1")
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")

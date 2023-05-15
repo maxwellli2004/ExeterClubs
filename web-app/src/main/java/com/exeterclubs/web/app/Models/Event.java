@@ -1,3 +1,4 @@
+package com.exeterclubs.web.app.Models;
 import java.util.UUID;
 import java.util.Date;
 import java.awt.Color;

@@ -1,6 +1,7 @@
 package com.exeterclubs.web.app.Controllers;
 
 import com.exeterclubs.web.app.Models.*;
+import com.google.api.client.util.Lists;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
@@ -8,29 +9,92 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ExecutionException;
 import java.util.List;
-import java.util.ArrayList;
+import java.util.UUID;
 
+// UserController is a service that handles all the CRUD operations for the User model
 @Service
 public class UserController {
     public static final String COL_NAME="users";
+
+    public static List<User> getAllUsers() {
+        try {
+            return read();
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
     
-    // Creates a new user in the database
+    // Create a user in the database
     public static String create(User user) throws InterruptedException, ExecutionException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
         ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection(COL_NAME).document(user.getId().toString()).set(user);
-        System.out.println("Created user: " + user.getId().toString() + " succesfully.");
+        System.out.println("Created user: " + user.getId().toString() + " successfully.");
         return collectionsApiFuture.get().getUpdateTime().toString();
     }
 
-    public static void read() throws InterruptedException, ExecutionException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
-        CollectionReference collectionReference = dbFirestore.collection(COL_NAME);
-        ApiFuture<QuerySnapshot> future = collectionReference.get();
-        QuerySnapshot querySnapshot = future.get();
-        List<User> users = querySnapshot.toObjects(User.class);
+    // Reads all users in the database
+    public static List<User> read() throws InterruptedException, ExecutionException {
+        Firestore db = FirestoreClient.getFirestore();
+        // asynchronously retrieve multiple documents
+        ApiFuture<QuerySnapshot> future = db.collection(COL_NAME).get();
+        // future.get() blocks on response
+        List<QueryDocumentSnapshot> documents = future.get().getDocuments();
 
-        for (User user: users) {
-            System.out.println(user.email);
+        List<User> users = Lists.newArrayList();
+
+        for (DocumentSnapshot document : documents) {
+            users.add(document.toObject(User.class));
         }
+
+        return users;
+    }
+
+    // Updates a user in the database
+    public static String update(User user) throws InterruptedException, ExecutionException {
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection(COL_NAME).document(user.getId().toString()).set(user);
+        System.out.println("Updated user: " + user.getId().toString() + " successfully.");
+        return collectionsApiFuture.get().getUpdateTime().toString();
+    }
+
+    // Deletes a user in the database
+    public static String delete(String ID) throws InterruptedException, ExecutionException {
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        ApiFuture<WriteResult> writeResult = dbFirestore.collection(COL_NAME).document(ID).delete();
+        System.out.println("Deleted user: " + ID + " sucesfully.");
+        return writeResult.get().getUpdateTime().toString();
+    }
+
+    // Gets a user by their ID
+    public static User getUserByID(UUID id) {
+        try {
+            List<User> users = read();
+            for (User user : users) {
+                if (user.getId().equals(id)) {
+                    return user;
+                }
+            }
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    public static User getUserByEmail(String email) {
+        try {
+            List<User> users = read();
+            for (User user : users) {
+                if (user.getEmail().equals(email)) {
+                    return user;
+                }
+            }
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return null;
     }
 }

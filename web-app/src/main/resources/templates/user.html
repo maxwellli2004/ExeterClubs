@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/example.css}">
-    <title>Example Page</title>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
 </head>
 <body>
-    <h1>New User</h1>
-    <p>This is just a page to show when a new user is created.</p>
+    <h1>User Profile</h1>
+    <p>Email: <span th:text="${user.email}"></span></p>
+    <p>Password: <span th:text="${user.password}"></span></p>
 </body>
 </html>

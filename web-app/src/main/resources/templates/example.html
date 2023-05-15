@@ -1,13 +1,44 @@
+<!--CREATED BY COPILOT-->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/example.css}">
-    <title>Example Page</title>
+    <meta charset="UTF-8">
+    <title>User Management</title>
 </head>
 <body>
-    <h1 th:text="${title}"></h1>
-    <p>This is just an example page to showcase how spring boot works.</p>
-<!--    <button type=submit onclick='UserController.read()'>Print Users</button>-->
+    <h1>User Management</h1>
+    <table id="user-table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.password}"></td>
+                <td>
+                    <form   th:action="@{/users/delete/{id}(id=${user.id})}" th:object="${user}" method="post">
+                        <input type="hidden" th:field="*{id}" />
+                        <button type="submit" class="delete-button">Delete</button>
+                    </form>
+                    <!-- <form th:action="@{/users/update}" th:object="${user}" method="get">
+                        <input type="hidden" th:field="*{id}" />
+                        <button type="submit">Update</button>
+                    </form> -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>Create User</h2>
+    <form th:action="@{/users/create}" th:object="${user}" method="post">
+        <label>Email:</label>
+        <input type="email" th:field="*{email}" required><br>
+        <label>Password:</label>
+        <input type="password" th:field="*{password}" required><br>
+        <button type="submit">Create User</button>
+    </form>
 </body>
 </html>

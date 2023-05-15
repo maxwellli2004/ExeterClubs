@@ -1,0 +1,444 @@
+/* add some basic styles for the top bar menu */
+.top-bar {
+  background-color: rgb(136, 0, 0);
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+/* style the logo in top bar menu */
+.top-bar .logo {
+  float: left;
+  padding: 10px;
+  padding-top: 15px;
+  font-size: 24px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.top-bar .logo:hover,
+.logo:focus,
+.logo:active,
+.logo:visited {
+  color: white;
+  text-decoration: none;
+}
+
+/* style buttons in the top bar menu */
+.top-bar .menu {
+  float: right;
+  padding: 15px 10px 10px 10px;
+}
+
+/*style of tag*/
+.top-bar .menu a {
+  color: white;
+  font-size: 16px;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* change the color of button when it's hovered over */
+.top-bar .menu a:hover {
+  background-color: #111;
+}
+
+/* add styles for menu button */
+.top-bar .menu-button {
+  display: block;
+  float: left;
+  padding: 12.5px 10px 10px 10px;
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+}
+
+/* add styles for  sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 100%;
+  background-color: #f2f2f2;
+  z-index: 1;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+  transform: translateX(-100%);
+}
+
+.sidebar.active {
+  transform: translateX(0);
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 36px;
+}
+
+.sidebar a {
+  display: block;
+  color: #333;
+  padding: 16px;
+  font-size: 20px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  background-color: #ddd;
+}
+
+.sidebar .close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 30px;
+  margin-left: 50px;
+}
+
+.sidebar input[type="text"] {
+  padding: 6px;
+  padding-left: 18px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+
+/* remove margin and padding from body */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+body {
+  font-family: Verdana, sans-serif;
+}
+
+/* month header */
+.month {
+  padding: 70px 25px;
+  width: 100%;
+  background: #1abc9c;
+  text-align: center;
+}
+
+/* month list */
+.month ul {
+  margin: 0;
+  padding: 0;
+}
+
+.month ul li {
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* previous button inside month header */
+.month .prev {
+  float: left;
+  padding-top: 10px;
+}
+
+/* next button */
+.month .next {
+  float: right;
+  padding-top: 10px;
+}
+
+/* weekdays (Mon-Sun) */
+.weekdays {
+  margin: 0;
+  padding: 10px 0;
+  background-color: #ddd;
+}
+
+.weekdays li {
+  display: inline-block;
+  width: 13.6%;
+  color: #666;
+  text-align: center;
+}
+
+/* days (1-31) */
+.days {
+  padding: 10px 0;
+  background: #eee;
+  margin: 0;
+}
+
+.days li {
+  list-style-type: none;
+  display: inline-block;
+  width: 13.6%;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 12px;
+  color: #777;
+}
+
+/* highlight the "current" day */
+.days li .active {
+  padding: 5px;
+  background: #1abc9c;
+  color: white !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+/* full-width input fields for modal */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* background color when the inputs get focus */
+input[type="text"]:focus,
+input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* style for signup button */
+.signUpButton {
+  background-color: #04aa6d;
+  color: white;
+  cursor: pointer;
+  opacity: 0.9;
+  padding: 10px;
+}
+
+button:hover {
+  opacity: 1;
+}
+
+/*styles for cancel button IN THE MODAL*/
+.cancelbtn {
+  float: left;
+  margin-right: 1%;
+}
+
+/* float cancel button IN THE MODAL*/
+.signupbtn {
+  float: right;
+}
+
+/* padding to container overall elements within the modal */
+.container {
+  padding: 16px;
+}
+
+/* modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+/* modal content/box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* style the horizontal ruler */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* close Button (x) */
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn,
+  .signupbtn {
+    width: 100%;
+  }
+}
+#myInput {
+  background-image: url("/css/searchicon.png"); /* Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+
+#myUL {
+  /* Remove default list styling */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myUL li a {
+  border: 1px solid #ddd; /* Add a border to all links */
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6; /* Grey background color */
+  padding: 12px; /* Add some padding */
+  text-decoration: none; /* Remove default text underline */
+  font-size: 18px; /* Increase the font-size */
+  color: black; /* Add a black text color */
+  display: block; /* Make it into a block element to fill the whole list */
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee; /* Add a hover effect to all links, except for headers */
+}
+
+.date {
+  margin-left: 1%;
+  margin-bottom: 1%;
+  background-color: #bc0101;
+  width: 12.8%;
+  height: 50px;
+  color: white;
+  cursor: pointer;
+}
+
+/*
+.datePopup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid black;
+  padding: 20px;
+} */
+
+.dropdownItem {
+  margin: 10% 10% 0 0;
+  display: inline-block;
+}
+
+input[type="checkbox"],
+a {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.openClub-button {
+  font-size: 23px;
+  margin-left: 81%;
+  position: fixed;
+  border: none;
+  cursor: pointer;
+}
+
+/* The popup form - hidden by default */
+.club-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.clubForm-container {
+  max-width: 200px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.clubForm-container input[type="text"],
+.clubForm-container input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.clubForm-container input[type="text"]:focus,
+.clubForm-container input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.clubForm-container .cancel {
+  background-color: red;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+/* Add some hover effects to buttons */
+.clubForm-container .btn:hover,
+.openClub-button:hover {
+  opacity: 1;
+}
+
+#sidebar ul li label {
+  display: flex;
+  align-items: center;
+}
+
+#sidebar ul li label a {
+  margin-left: 10px;
+}
+
+.clubDescriptionDiv {
+  margin: 7% 0% 0% 3%;
+}

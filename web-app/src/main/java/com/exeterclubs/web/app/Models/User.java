@@ -3,21 +3,26 @@ package com.exeterclubs.web.app.Models;
 import java.util.UUID;
 
 public class User {
-    public String email;
-    public String password;
-    public UUID id;
+    private String email;
+    private String password;
+    public String id;
 //    public UUID[] member;
 //    public UUID[] head;
-    private boolean admin;
+    private boolean admin = false;
     //TODO: Add events
 
-    public User(String email, String password, UUID id, boolean admin) {
+    public User() { }
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+        this.id = UUID.randomUUID().toString();
+    }
+
+    public User(String email, String id, String password) {
         this.email = email;
         this.password = password;
         this.id = id;
-//        this.member = member;
-//        this.head = head;
-        this.admin = admin;
     }
     
     // MARK: Getters + Setters
@@ -37,11 +42,11 @@ public class User {
         this.password = password;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 

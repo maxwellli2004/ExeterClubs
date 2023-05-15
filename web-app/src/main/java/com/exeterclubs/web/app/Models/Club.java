@@ -1,7 +1,6 @@
 package com.exeterclubs.web.app.Models;
 
 import java.util.UUID;
-import java.util.Optional;
 
 public class Club {
 	public boolean approved;
