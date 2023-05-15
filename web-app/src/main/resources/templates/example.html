@@ -24,10 +24,13 @@
                         <input type="hidden" th:field="*{id}" />
                         <button type="submit" class="delete-button">Delete</button>
                     </form>
-                    <!-- <form th:action="@{/users/update}" th:object="${user}" method="get">
-                        <input type="hidden" th:field="*{id}" />
+                    <form th:action="@{/users/update/{id}(id=${user.id})}" th:object="${user}" method="post">
+                        <label>Email:</label>
+                        <input type="email" th:field="*{email}" required><br>
+                        <label>Password:</label>
+                        <input type="password" th:field="*{password}" required><br>
                         <button type="submit">Update</button>
-                    </form> -->
+                    </form>
                 </td>
             </tr>
         </tbody>

@@ -52,10 +52,10 @@ public class UserController {
     }
 
     // Updates a user in the database
-    public static String update(User user) throws InterruptedException, ExecutionException {
+    public static String update(String ID, User user) throws InterruptedException, ExecutionException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection(COL_NAME).document(user.getId().toString()).set(user);
-        System.out.println("Updated user: " + user.getId().toString() + " successfully.");
+        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection(COL_NAME).document(ID).set(user);
+        System.out.println("Updated user: " + ID + " successfully.");
         return collectionsApiFuture.get().getUpdateTime().toString();
     }
 

@@ -11,6 +11,8 @@ public class Club {
 	//public Date[] meetingTimes;
 	public UUID id;
 	
+	public Club() { }
+
 	public Club(boolean approved, String description, UUID[] heads, UUID[] members, UUID id) {
         this.approved = approved;
         this.description = description;
@@ -21,6 +23,63 @@ public class Club {
         this.id = id;
     }
 	
+	// Getters and setters
+	public boolean getApproved() {
+		return approved;
+	}
+
+	public void setApproved(boolean approved) {
+		this.approved = approved;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public UUID[] getHeads() {
+		return heads;
+	}
+
+	public void setHeads(UUID[] heads) {
+		this.heads = heads;
+	}
+
+	public UUID[] getMembers() {
+		return members;
+	}
+
+	public void setMembers(UUID[] members) {
+		this.members = members;
+	}
+
+	/*public Announcements[] getAnnouncements() {
+		return announcements;
+	}
+
+	public void setAnnouncements(Announcements[] announcements) {
+		this.announcements = announcements;
+	}
+
+	public Date[] getMeetingTimes() {
+		return meetingTimes;
+	}
+
+	public void setMeetingTimes(Date[] meetingTimes) {
+		this.meetingTimes = meetingTimes;
+	}*/
+
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
+
 	/*
 	TODO: Implement 
 

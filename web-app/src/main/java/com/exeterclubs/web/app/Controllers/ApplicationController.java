@@ -23,6 +23,11 @@ public class ApplicationController {
         return "index";
     }
 
+    @GetMapping("/clubdesc") 
+    public String clubDetail() {
+        return "clubdesc";
+    }
+
     @GetMapping("/example")
 	public String example(Model model) {
         System.out.println("Navigating to example page");
@@ -38,6 +43,21 @@ public class ApplicationController {
         }
 
         return "example";
+    }
+
+    @GetMapping("/clubs") 
+    public String clubs(Model model) {
+        try {
+            List<Club> clubs = ClubController.read();
+
+            model.addAttribute("clubs", clubs);
+            model.addAttribute("club", new Club());
+        }
+        catch(Exception e) {
+            return "error";
+        }
+
+        return "ClubExample";
     }
 
     @RequestMapping(value="/users/create", method=RequestMethod.POST)
@@ -56,7 +76,7 @@ public class ApplicationController {
 
         model.addAttribute("user", user);
 
-        return "example";
+        return "redirect:/example";
     }
 
     @RequestMapping(value="/users/delete/{id}", method=RequestMethod.POST)
@@ -80,15 +100,15 @@ public class ApplicationController {
         return "redirect:/example";
     }
 
-    @RequestMapping(value="/users/update", method=RequestMethod.POST)
-    public String updateUser(Model model, @ModelAttribute("user") User user, BindingResult result) {
+    @RequestMapping(value="/users/update/{id}", method=RequestMethod.POST)
+    public String updateUser(Model model, @ModelAttribute("user") User user, BindingResult result, @PathVariable("id") String id) {
         if (result.hasErrors()) {
             return "error";
         }
 
         // Delete the user from the database
         try {
-            UserController.update(user);
+            UserController.update(id, user);
         }
         catch(Exception e) {
             System.out.println(e);
@@ -96,7 +116,7 @@ public class ApplicationController {
 
         model.addAttribute("user", user);
 
-        return "example";
+        return "redirect:/example";
     }
 
     private List<User> getUsers() {
