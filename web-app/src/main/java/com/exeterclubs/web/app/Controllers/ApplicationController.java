@@ -10,21 +10,76 @@ import org.springframework.ui.Model;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 /// Creates routes (web url handlers) with different inputs and models to pass data to view
 @Controller
 public class ApplicationController {
 
     // MARK: - Routes
     @GetMapping("/")
-    public String exampleIndex(Model model) {
+    public static String exampleIndex(Model model, HttpSession session) {
+        addAuth(model, session);
         model.addAttribute("clubs", ClubController.getAllClubs());
 
         return "index";
     }
 
-    @GetMapping("/index")
-    public String index2() {
-        return "index";
+    // MARK: - Authentication
+    @GetMapping("/authenticate")
+    public static String signUp(Model model) {
+        System.out.println("Navigating to signup page");
+
+        model.addAttribute("user", new User());
+        return "auth";
+    }
+
+    // Validates user and redirects to home page
+    @RequestMapping(value="/signIn", method=RequestMethod.POST)
+    public static String signIn(@RequestParam String email, @RequestParam String password, Model model, HttpSession session) {
+        System.out.println("Signing in user with email: " + email);
+
+        try {
+            String idToken = AuthService.validateUser(email, password);
+
+            session.setAttribute("idToken", idToken);
+        }
+        catch(Exception e) {
+            System.out.println("Error validating user: " + e.getMessage());
+        }
+
+        model.addAttribute("clubs", ClubController.getAllClubs());
+        return "redirect:/";
+    }
+
+    @RequestMapping(value="signUp", method=RequestMethod.POST)
+    public static String signUp(@RequestParam String email, @RequestParam String password, Model model, HttpSession session) {
+        System.out.println("Signing up user with email: " + email);
+
+        try {
+            AuthService.createUser(email, password);
+            String idToken = AuthService.validateUser(email, password);
+
+            session.setAttribute("idToken", idToken);
+        }
+        catch(Exception e) {
+            System.out.println("Error creating user: " + e.getMessage());
+        }
+
+        model.addAttribute("clubs", ClubController.getAllClubs());
+        return "redirect:/";
+    }
+
+    @RequestMapping(value="/signOut", method=RequestMethod.POST)
+    public static String signOut(Model model, HttpSession session) {
+        System.out.println("Signing out user");
+
+        session.removeAttribute("idToken");
+        
+        addAuth(model, session);
+
+        model.addAttribute("clubs", ClubController.getAllClubs());
+        return "redirect:/";
     }
 
     @GetMapping("/example")
@@ -48,6 +103,7 @@ public class ApplicationController {
         return "example";
     }
 
+    // MARK: - Club Stuff
     @GetMapping("/clubDetail/{id}")
     public String clubDetail(Model model, @ModelAttribute("club") Club club, BindingResult result, @PathVariable("id") String id) {
         if (result.hasErrors()) {
@@ -124,7 +180,9 @@ public class ApplicationController {
         // Save the user to the database
         try {
             user.setId(UUID.randomUUID().toString());
+            
             UserController.create(user);
+            AuthService.createUser(user.getEmail(), user.getPassword());
         }
         catch(Exception e) {
             System.out.println(e);
@@ -132,7 +190,7 @@ public class ApplicationController {
 
         model.addAttribute("user", user);
 
-        return "redirect:/example";
+        return "redirect:/";
     }
 
     @RequestMapping(value="/users/delete/{id}", method=RequestMethod.POST)
@@ -184,4 +242,13 @@ public class ApplicationController {
             return null;
         }
     }
+
+    private static void addAuth(Model model, HttpSession session) {
+        String idToken = (String) session.getAttribute("idToken");
+
+        Boolean authenticated = idToken != null;
+        
+        model.addAttribute("authenticated", authenticated);
+    }
 }
+

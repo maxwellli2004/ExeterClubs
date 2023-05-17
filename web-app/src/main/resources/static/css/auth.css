@@ -1,0 +1,67 @@
+
+
+/* add some basic styles for the top bar menu */
+.top-bar {
+    background-color: rgb(136, 0, 0);
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  /* style the logo in top bar menu */
+  .top-bar .logo {
+    float: left;
+    padding: 10px 10px 10px 5px;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .top-bar .logo:hover,
+  .logo:focus,
+  .logo:active,
+  .logo:visited,
+  .logo:link {
+    color: white;
+    text-decoration: none;
+  }
+  
+  /* style buttons in the top bar menu */
+  .top-bar .menu {
+    float: right;
+    padding: 15px 10px 10px 10px;
+  }
+  
+  /*style of tag*/
+  .top-bar .menu a {
+    color: white;
+    font-size: 16px;
+    padding: 14px 16px;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  /* change the color of button when it's hovered over */
+  .top-bar .menu a:hover {
+    background-color: #111;
+  }
+  
+  /* add styles for menu button */
+  .top-bar .menu-button {
+    display: block;
+    float: left;
+    padding: 17.25px 10px 10px 10px;
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+  }
+
+@media screen and (max-width: 300px) {
+    .cancelbtn,
+    .signupbtn {
+      width: 100%;
+    }
+} 

@@ -18,6 +18,15 @@
   text-decoration: none;
 }
 
+.top-bar #signOut {
+  float: right;
+  color: white;
+  font-size: 16px;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+}
+
 .top-bar .logo:hover,
 .logo:focus,
 .logo:active,
@@ -220,7 +229,6 @@ input[type="password"]:focus {
 
 /* style for signup button */
 .signUpButton {
-  background-color: #04aa6d;
   color: white;
   cursor: pointer;
   opacity: 0.9;

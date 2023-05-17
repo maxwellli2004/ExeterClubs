@@ -68,7 +68,7 @@ public class UserController {
     }
 
     // Gets a user by their ID
-    public static User getUserByID(UUID id) {
+    public static User getUserByID(String id) {
         try {
             List<User> users = read();
             for (User user : users) {
