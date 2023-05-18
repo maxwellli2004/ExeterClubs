@@ -8,7 +8,7 @@ public class User {
     public String id;
 //    public UUID[] member;
 //    public UUID[] head;
-    private boolean admin = false;
+    // private boolean admin = false;
     //TODO: Add events
 
     public User() { }
@@ -66,8 +66,9 @@ public class User {
     public void setHead(UUID[] head) {
         this.head = head;
     }
-    */
+    
     public void setAdmin(boolean admin) {
         this.admin = admin;
     }
+    */
 }

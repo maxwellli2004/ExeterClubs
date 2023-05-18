@@ -3,14 +3,12 @@ package com.exeterclubs.web.app.Controllers;
 import com.exeterclubs.web.app.Models.Club;
 import com.google.api.client.util.Lists;
 import com.google.api.core.ApiFuture;
-import com.google.api.gax.rpc.InternalException;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ExecutionException;
 import java.util.List;
-import java.util.UUID;
 
 // ClubController is a service that handles all the CRUD operations for the Controller model
 @Service

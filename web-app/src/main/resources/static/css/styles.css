@@ -18,15 +18,6 @@
   text-decoration: none;
 }
 
-.top-bar #signOut {
-  float: right;
-  color: white;
-  font-size: 16px;
-  padding: 14px 16px;
-  text-align: center;
-  text-decoration: none;
-}
-
 .top-bar .logo:hover,
 .logo:focus,
 .logo:active,
@@ -126,14 +117,14 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: Verdana, sans-serif;
 }
 
 ul {
   list-style-type: none;
 }
-body {
-  font-family: Verdana, sans-serif;
-}
+
+/*OG CALENDAR START*/
 
 /* month header */
 .month {
@@ -209,6 +200,7 @@ body {
 * {
   box-sizing: border-box;
 }
+
 /* full-width input fields for modal */
 input[type="text"],
 input[type="password"] {
@@ -229,6 +221,7 @@ input[type="password"]:focus {
 
 /* style for signup button */
 .signUpButton {
+  background-color: #04aa6d;
   color: white;
   cursor: pointer;
   opacity: 0.9;
@@ -438,6 +431,56 @@ a {
   opacity: 1;
 }
 
+.date-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  z-index: 9;
+}
+
+.dateForm-container {
+  max-width: 200px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.dateForm-container input[type="text"],
+.dateForm-container input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.dateForm-container input[type="text"]:focus,
+.dateForm-container input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.dateForm-container .cancel {
+  background-color: red;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+/* Add some hover effects to buttons */
+.dateForm-container .btn:hover,
+.openDate-button:hover {
+  opacity: 1;
+}
+
 #sidebar ul li label {
   display: flex;
   align-items: center;
@@ -448,5 +491,17 @@ a {
 }
 
 .clubDescriptionDiv {
+  margin: 7% 0% 0% 3%;
+}
+
+.createClubDiv {
+  margin: 7% 0% 0% 3%;
+}
+
+.eventPageDiv {
+  margin: 7% 0% 0% 3%;
+}
+
+.mainFooter {
   margin: 7% 0% 0% 3%;
 }

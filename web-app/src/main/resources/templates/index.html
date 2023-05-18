@@ -8,102 +8,30 @@
     <title>ExeterClubs Calendar</title>
   </head>
   <body>
- <!-- top bar menu -->
-  <div class="top-bar">
-    <div class="menu-button" onclick="toggleSidebar()">&#9776;</div>
-    <div class="logo">
-      <a class="logo" th:href="@{/}">ExeterClubs</a>
-    </div>
-    <div class="menu">
-      <a href="#">Settings</a>
-      <a href="#"> FAQ</a>
-      <a href="#">Contact</a>
-      <!-- button to open modal -->
-      <form th:action="@{/signOut}" method="post" th:if="${authenticated}" id="signOut">
-        <input type="submit" value="Sign Out">
-      </form>
-      <a th:href="@{/authenticate}" th:if="${!authenticated}">Sign In</a>
-    </div>
-  </div>
-
-    <!-- sidebar -->
-    <div class="sidebar" id="sidebar">
-      <a href="#" class="close-btn" onclick="toggleSidebar()">&times;</a>
-      <div class="search-container">
-        <input
-          type="text"
-          placeholder="Search.."
-          id="myInput"
-          onkeyup="dropDownFunction()"
-        />
-      </div>
-      <ul id="dropdownItems">
-        <li th:each="club : ${clubs}">
-          <label class="dropdownItem">
-            <input type="checkbox" class="name-checkbox" />
-            <a th:href="@{/clubDetail/{id}(id=${club.id})}"><span th:text="${club.name}"></span></a>
-            <button class="openClub-button" onclick="openClub(this)">
-              &#8942;
-            </button>
-          </label>
-        </li>
-      </ul>
-    </div>
-
-    <!--club popup-->
-    <div class="club-popup" id="clubForm">
-      <div class="clubForm-container">
-        <h2>Receive:</h2>
+    <div th:insert="navbar :: nav-bar"></div>
+    <!--date popup-->
+    <div class="date-popup" id="dateForm">
+      <div class="dateForm-container">
+        <h2>Events:</h2>
         <div>
-          <label>
-            <input
-              type="checkbox"
-              name="all"
-              onclick="if(this.checked){signUpAll();}else{signOffAll();}"
-            />
-            All:
-          </label>
+          <a href="./eventPage.html">hi</a>
         </div>
         <div>
-          <label>
-            <input
-              type="checkbox"
-              name="emails"
-              onclick="if(this.checked){signUpEmail();}else{signOffEmails();}"
-            />
-            Emails:
-          </label>
+          <a href="./eventPage.html">hi</a>
         </div>
         <div>
-          <label>
-            <input
-              type="checkbox"
-              name="meetings"
-              onclick="if(this.checked){signUpMeetings();}else{signOffMeetings();}"
-            />
-            Meetings:
-          </label>
+          <a href="./eventPage.html">hi</a>
         </div>
         <div>
-          <label>
-            <input
-              type="checkbox"
-              name="events"
-              onclick="if(this.checked){signUpEvents();}else{signOffEvents();}"
-            />
-            Events:
-          </label>
+          <a href="./eventPage.html">hi</a>
         </div>
-        <button type="button" class="btn cancel" onclick="closeClub()">
+        <button type="button" class="btn cancel" onclick="closeDate()">
           Close
         </button>
       </div>
     </div>
 
-    <!-- overlay -->
-    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
-
-    <!-- calendar code -->
+    <!--calendar-->
     <div class="month">
       <ul>
         <li class="prev">&#10094;</li>
@@ -123,140 +51,43 @@
     </ul>
 
     <ul class="days" onclick="popUp()">
-      <button class="date" onclick="openEvent()">1</button>
-      <button class="date" onclick="openEvent()">2</button>
-      <button class="date" onclick="openEvent()">3</button>
-      <button class="date" onclick="openEvent()">4</button>
-      <button class="date" onclick="openEvent()">5</button>
-      <button class="date" onclick="openEvent()">6</button>
-      <button class="date" onclick="openEvent()">7</button>
-      <button class="date" onclick="openEvent()">8</button>
-      <button class="date" onclick="openEvent()">9</button>
-      <button class="date" onclick="openEvent()">
-        <span class="active" onclick="openEvent()">10</span>
+      <button class="openDate-button" onclick="openDate(this)">1</button>
+      <button class="openDate-button" onclick="openDate(this)">2</button>
+      <button class="openDate-button" onclick="openDate(this)">3</button>
+      <button class="openDate-button" onclick="openDate(this)">4</button>
+      <button class="openDate-button" onclick="openDate(this)">5</button>
+      <button class="openDate-button" onclick="openDate(this)">6</button>
+      <button class="openDate-button" onclick="openDate(this)">7</button>
+      <button class="openDate-button" onclick="openDate(this)">8</button>
+      <button class="openDate-button" onclick="openDate(this)">9</button>
+      <button class="openDate-button" onclick="openDate(this)">
+        <span class="active" onclick="openDate(this)">10</span>
       </button>
-      <button class="date" onclick="openEvent()">11</button>
-      <button class="date" onclick="openEvent()">12</button>
-      <button class="date" onclick="openEvent()">13</button>
-      <button class="date" onclick="openEvent()">14</button>
-      <button class="date" onclick="openEvent()">15</button>
-      <button class="date" onclick="openEvent()">16</button>
-      <button class="date" onclick="openEvent()">17</button>
-      <button class="date" onclick="openEvent()">18</button>
-      <button class="date" onclick="openEvent()">19</button>
-      <button class="date" onclick="openEvent()">20</button>
-      <button class="date" onclick="openEvent()">21</button>
-      <button class="date" onclick="openEvent()">22</button>
-      <button class="date" onclick="openEvent()">23</button>
-      <button class="date" onclick="openEvent()">24</button>
-      <button class="date" onclick="openEvent()">25</button>
-      <button class="date" onclick="openEvent()">26</button>
-      <button class="date" onclick="openEvent()">27</button>
-      <button class="date" onclick="openEvent()">28</button>
-      <button class="date" onclick="openEvent()">29</button>
-      <button class="date" onclick="openEvent()">30</button>
-      <button class="date" onclick="openEvent()">31</button>
+      <button class="openDate-button" onclick="openDate(this)">11</button>
+      <button class="openDate-button" onclick="openDate(this)">12</button>
+      <button class="openDate-button" onclick="openDate(this)">13</button>
+      <button class="openDate-button" onclick="openDate(this)">14</button>
+      <button class="openDate-button" onclick="openDate(this)">15</button>
+      <button class="openDate-button" onclick="openDate(this)">16</button>
+      <button class="openDate-button" onclick="openDate(this)">17</button>
+      <button class="openDate-button" onclick="openDate(this)">18</button>
+      <button class="openDate-button" onclick="openDate(this)">19</button>
+      <button class="openDate-button" onclick="openDate(this)">20</button>
+      <button class="openDate-button" onclick="openDate(this)">21</button>
+      <button class="openDate-button" onclick="openDate(this)">22</button>
+      <button class="openDate-button" onclick="openDate(this)">23</button>
+      <button class="openDate-button" onclick="openDate(this)">24</button>
+      <button class="openDate-button" onclick="openDate(this)">25</button>
+      <button class="openDate-button" onclick="openDate(this)">26</button>
+      <button class="openDate-button" onclick="openDate(this)">27</button>
+      <button class="openDate-button" onclick="openDate(this)">28</button>
+      <button class="openDate-button" onclick="openDate(this)">29</button>
+      <button class="openDate-button" onclick="openDate(this)">30</button>
+      <button class="openDate-button" onclick="openDate(this)">31</button>
     </ul>
 
-    <!--ADD FORM HTML AND CREATE OPENEVENT() FUNCTION-->
-
-    <!--mini calendar :)-->
-    <div class="mini-container">
-      <div class="mini-calendar">
-        <div class="front">
-          <div class="current-date">
-            <h1>Friday 15th</h1>
-            <h1>January 2016</h1>
-          </div>
-
-          <div class="current-month">
-            <ul class="week-days">
-              <li>MON</li>
-              <li>TUE</li>
-              <li>WED</li>
-              <li>THU</li>
-              <li>FRI</li>
-              <li>SAT</li>
-              <li>SUN</li>
-            </ul>
-
-            <div class="weeks">
-              <div class="first">
-                <span class="last-month">28</span>
-                <span class="last-month">29</span>
-                <span class="last-month">30</span>
-                <span class="last-month">31</span>
-                <span>01</span>
-                <span>02</span>
-                <span>03</span>
-              </div>
-
-              <div class="second">
-                <span>04</span>
-                <span>05</span>
-                <span class="event">06</span>
-                <span>07</span>
-                <span>08</span>
-                <span>09</span>
-                <span>10</span>
-              </div>
-
-              <div class="third">
-                <span>11</span>
-                <span>12</span>
-                <span>13</span>
-                <span>14</span>
-                <span class="active">15</span>
-                <span>16</span>
-                <span>17</span>
-              </div>
-
-              <div class="fourth">
-                <span>18</span>
-                <span>19</span>
-                <span>20</span>
-                <span>21</span>
-                <span>22</span>
-                <span>23</span>
-                <span>24</span>
-              </div>
-
-              <div class="fifth">
-                <span>25</span>
-                <span>26</span>
-                <span>27</span>
-                <span>28</span>
-                <span>29</span>
-                <span>30</span>
-                <span>31</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="back">
-          <input placeholder="What's the event?" />
-          <div class="info">
-            <div class="date">
-              <p class="info-date">Date: <span>Jan 15th, 2016</span></p>
-              <p class="info-time">Time: <span>6:35 PM</span></p>
-            </div>
-            <div class="address">
-              <p>Address: <span>129 W 81st St, New York, NY</span></p>
-            </div>
-            <div class="observations">
-              <p>Observations: <span>Be there 15 minutes earlier</span></p>
-            </div>
-          </div>
-
-          <div class="actions">
-            <button class="save">Save <i class="ion-checkmark"></i></button>
-            <button class="dismiss">
-              Dismiss <i class="ion-android-close"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <footer class="mainFooter">
+      <p>&copy; ExeterClubs 2023</p>
+    </footer>
   </body>
 </html>

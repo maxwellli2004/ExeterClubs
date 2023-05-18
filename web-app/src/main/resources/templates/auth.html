@@ -4,20 +4,11 @@
     <meta charset="UTF-8">
     <title>Authenticate</title>
     <link rel="stylesheet" th:href="@{/css/auth.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <script th:src="@{/js/script.js}"></script> 
 </head>
 <body>
-    <!-- top bar menu -->
-  <div class="top-bar">
-    <div class="logo">
-      <a class="logo" th:href="@{/}">ExeterClubs</a>
-    </div>
-    <div class="menu">
-      <a href="#">Settings</a>
-      <a href="#"> FAQ</a>
-      <a href="#">Contact</a>
-      <a th:href="@{/signUp}" class="signUpButton">Sign Up</a>
-    </div>
-  </div>
+  <div th:insert="navbar :: nav-bar"></div>
   <div id="signup">
     <h1>Sign Up</h1>
     <form th:action="@{/signUp}" method="post">

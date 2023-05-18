@@ -39,14 +39,14 @@ function popUp() {
 }
 
 function openClub(button) {
-  // Get the button position relative to the viewport
+  // get the button position relative to the viewport
   const buttonRect = button.getBoundingClientRect();
-  // Get the popup form element
+  // get the popup form element
   const clubForm = document.getElementById("clubForm");
-  // Position the popup form next to the button
+  // position the popup form next to the button
   clubForm.style.left = `${buttonRect.right + 10}px`;
   clubForm.style.top = `${buttonRect.top}px`;
-  // Show the popup form
+  // show the popup form
   clubForm.style.display = "block";
 }
 
@@ -56,4 +56,20 @@ function openClub(button) {
 
 function closeClub() {
   document.getElementById("clubForm").style.display = "none";
+}
+
+function openDate(button) {
+  // get the button position relative to the viewport
+  const buttonRect = button.getBoundingClientRect();
+  // get the popup form element
+  const clubForm = document.getElementById("dateForm");
+  // position the popup form next to the button
+  clubForm.style.left = `${buttonRect.right + 10}px`;
+  clubForm.style.top = `${buttonRect.top}px`;
+  // show the popup form
+  clubForm.style.display = "block";
+}
+
+function closeDate() {
+  document.getElementById("dateForm").style.display = "none";
 }
