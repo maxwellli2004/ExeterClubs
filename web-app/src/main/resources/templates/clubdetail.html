@@ -27,6 +27,14 @@
               </li>
           </p>
         </section>
+        <form th:action="@{/clubs/update/{id}(id=${club.id})}" method="post">
+          <input type="hidden" name="id" th:value="${club.id}" />
+          <input type="hidden" name="name" th:value="${club.name}" />
+          <input type="hidden" name="description" th:value="${club.description}" />
+          <input type="hidden" name="heads" th:value="${club.heads}" />
+          <input type="hidden" name="members" th:value="${club.members + ',' + email}" />
+          <button type="submit">Join Club</button>
+        </form>
       </main>
       <footer>
         <p>&copy; 2023 Club Name</p>

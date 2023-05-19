@@ -17,6 +17,7 @@ public class ClubController {
     public static List<Club> memberClubs = Lists.newArrayList();
     public static List<Club> coheadClubs = Lists.newArrayList();
     public static List<Club> nonClubs = Lists.newArrayList();
+
     public static final String COL_NAME="clubs";
 
     public static Club getClub(String ID) {
@@ -76,6 +77,15 @@ public class ClubController {
         Firestore dbFirestore = FirestoreClient.getFirestore();
         ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection(COL_NAME).document(ID).delete();
         System.out.println("Deleted club: " + ID + " successfully.");
+        read(email);
+        return collectionsApiFuture.get().getUpdateTime().toString();
+    }
+
+    public static String update(Club club, String email) throws InterruptedException, ExecutionException {
+        removeNulls(club);
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection(COL_NAME).document(club.getId().toString()).set(club);
+        System.out.println("Updated club: " + club.getId().toString() + " successfully.");
         read(email);
         return collectionsApiFuture.get().getUpdateTime().toString();
     }

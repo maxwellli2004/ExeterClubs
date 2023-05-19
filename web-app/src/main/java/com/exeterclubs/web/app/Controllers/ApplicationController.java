@@ -68,6 +68,7 @@ public class ApplicationController {
             
         String email = (String) session.getAttribute("email");
 
+
         club.addHead(email);
 
         // Save the club to the database
@@ -83,6 +84,27 @@ public class ApplicationController {
        setUpNavBar(model, session);
 
         return "redirect:/clubDetail/" + club.getId();
+    }
+
+    @RequestMapping(value="clubs/update/{id}", method=RequestMethod.POST)
+    public String updateClub(Model model, @ModelAttribute("club") Club club, BindingResult result, @PathVariable("id") String id, HttpSession session) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+
+        // Update the club in the database
+        try {
+            ClubController.update(club, (String) session.getAttribute("email"));
+        }
+        catch(Exception e) {
+            System.out.println(e);
+            return "error";
+        }
+
+        model.addAttribute("club", club);
+        setUpNavBar(model, session);
+
+        return "redirect:/";
     }
 
     @RequestMapping(value="clubs/delete/{id}", method=RequestMethod.POST)
