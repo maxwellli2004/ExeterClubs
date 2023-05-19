@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import java.util.List;
 import java.util.UUID;
+import com.google.api.client.util.Lists;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,33 +19,16 @@ public class ApplicationController {
     // MARK: - Routes
     @GetMapping("/")
     public static String exampleIndex(Model model, HttpSession session) {
-        AuthService.addAuth(model, session);
-        model.addAttribute("clubs", ClubController.getAllClubs());
+        System.out.println(session.getAttribute("email"));
+        setUpNavBar(model, session);
 
         return "index";
-    }
-
-    @GetMapping("/example")
-	public String example(Model model) {
-        System.out.println("Navigating to example page");
-
-        try {
-            List<Club> clubs = ClubController.read();
-
-            model.addAttribute("clubs", clubs);
-            model.addAttribute("club", new Club());
-        }
-        catch(Exception e) {
-            return "error";
-        }
-
-        return "example";
     }
 
     @GetMapping("/club/create") 
     public String createClub(Model model, HttpSession session) {
         model.addAttribute("club", new Club());
-        AuthService.addAuth(model, session);
+        setUpNavBar(model, session);
         return "createclub";
     }
 
@@ -66,8 +50,7 @@ public class ApplicationController {
 
         if (club != null) {
             model.addAttribute("club", club);
-            model.addAttribute("clubs", ClubController.getAllClubs());
-            AuthService.addAuth(model, session);
+            setUpNavBar(model, session);
             return "clubdetail";
         }
 
@@ -75,16 +58,21 @@ public class ApplicationController {
     }
     //MARK: - Club CRUD
     @RequestMapping(value="clubs/create", method=RequestMethod.POST) 
-    public String createClub(Model model, @ModelAttribute("club") Club club, BindingResult result) {
+    public String createClub(Model model, @ModelAttribute("club") Club club, BindingResult result, HttpSession session) {
         if (result.hasErrors()) {
             System.out.println(result.getAllErrors().toString());
             return "error";
         }
 
+        club.setId(UUID.randomUUID().toString());
+            
+        String email = (String) session.getAttribute("email");
+
+        club.addHead(email);
+
         // Save the club to the database
         try {
-            club.setId(UUID.randomUUID().toString());
-            ClubController.create(club);
+            ClubController.create(club, email);
         }
         catch(Exception e) {
             System.out.println(e);
@@ -92,29 +80,49 @@ public class ApplicationController {
         }
 
         model.addAttribute("club", club);
+       setUpNavBar(model, session);
 
-        return "redirect:/example";
+        return "redirect:/clubDetail/" + club.getId();
     }
 
     @RequestMapping(value="clubs/delete/{id}", method=RequestMethod.POST)
-    public String deleteClub(Model model, @ModelAttribute("club") Club club, BindingResult result, @PathVariable("id") String id) {
+    public String deleteClub(Model model, @ModelAttribute("club") Club club, BindingResult result, @PathVariable("id") String id, HttpSession session) {
         if (result.hasErrors()) {
             return "error";
         }
 
         // Delete the club from the database
         try {
-            ClubController.delete(id);
+            ClubController.delete(id, (String) session.getAttribute("email"));
         }
         catch(Exception e) {
             System.out.println(e);
             return "error";
         }
 
-        model.addAttribute("clubs", ClubController.getAllClubs());
+        setUpNavBar(model, session);
         model.addAttribute("club", new Club());
 
-        return "redirect:/example";
+        return "redirect:/";
+    }
+
+    public static void setUpNavBar(Model model, HttpSession session) {
+        String email = (String) session.getAttribute("email");
+
+        if (email != null) {
+            model.addAttribute("email", email);
+        }
+        try {
+            ClubController.read(email);
+            model.addAttribute("clubs", ClubController.nonClubs);
+            model.addAttribute("myClubs", ClubController.coheadClubs);
+            model.addAttribute("memberClubs", ClubController.memberClubs);
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+
+        AuthService.addAuth(model, session);
     }
 }
 

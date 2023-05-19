@@ -14,6 +14,7 @@ public class AuthController {
     public static String signUp(Model model, HttpSession session) {
         System.out.println("Navigating to signup page");
         AuthService.addAuth(model, session);
+        ApplicationController.setUpNavBar(model, session);
 
         return "auth";
     }
@@ -27,12 +28,14 @@ public class AuthController {
             String idToken = AuthService.validateUser(email, password);
 
             session.setAttribute("idToken", idToken);
+            session.setAttribute("email", email);
+
+            ApplicationController.setUpNavBar(model, session);
         }
         catch(Exception e) {
             System.out.println("Error validating user: " + e.getMessage());
         }
 
-        model.addAttribute("clubs", ClubController.getAllClubs());
         return "redirect:/";
     }
 
@@ -44,14 +47,16 @@ public class AuthController {
         try {
             AuthService.createUser(email, password);
             String idToken = AuthService.validateUser(email, password);
-
+            
+            session.setAttribute("email", email);
             session.setAttribute("idToken", idToken);
+
+            ApplicationController.setUpNavBar(model, session);
         }
         catch(Exception e) {
             System.out.println("Error creating user: " + e.getMessage());
         }
 
-        model.addAttribute("clubs", ClubController.getAllClubs());
         return "redirect:/";
     }
 
@@ -62,9 +67,8 @@ public class AuthController {
 
         session.removeAttribute("idToken");
         
-        AuthService.addAuth(model, session);
-
-        model.addAttribute("clubs", ClubController.getAllClubs());
+        ApplicationController.setUpNavBar(model, session);
+        
         return "redirect:/";
     }
 }

@@ -16,7 +16,7 @@
           <a class="logo" th:href="@{/}">ExeterClubs</a>
         </div>
         <div class="menu">
-          <a th:href="@{/club/create}">Create Club +</a>
+          <a th:href="@{/club/create}" th:if="${authenticated}">Create Club +</a>
           <a href="#">Settings</a>
           <a href="#"> FAQ</a>
           <a href="#">Contact</a>
@@ -39,7 +39,31 @@
               onkeyup="dropDownFunction()"
             />
           </div>
+          
           <ul id="dropdownItems">
+            <h2>My Clubs</h2>
+            <li th:each="club : ${myClubs}">
+              <label class="dropdownItem">
+                <input type="checkbox" class="name-checkbox" checked/>
+                <a th:href="@{/clubDetail/{id}(id=${club.id})}"><span th:text="${club.name}"></span></a>
+                <button class="openClub-button" onclick="openClub(this)">
+                  &#8942;
+                </button>
+              </label>
+            </li>
+
+            <h2>Clubs I've Joined</h2>
+            <li th:each="club : ${memberClubs}">
+              <label class="dropdownItem">
+                <input type="checkbox" class="name-checkbox" checked/>
+                <a th:href="@{/clubDetail/{id}(id=${club.id})}"><span th:text="${club.name}"></span></a>
+                <button class="openClub-button" onclick="openClub(this)">
+                  &#8942;
+                </button>
+              </label>
+            </li>
+
+            <h2>All Clubs</h2>
             <li th:each="club : ${clubs}">
               <label class="dropdownItem">
                 <input type="checkbox" class="name-checkbox" />

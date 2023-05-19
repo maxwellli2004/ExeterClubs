@@ -22,9 +22,9 @@
           </p>
           <p>
             Contact us at
-            <!--Get Emails from club-->
-            <a href="mailto:clubemail@exeter.edu">clubemail@exeter.edu</a> for
-            more information.
+            <li th:each="coheads : ${club.heads}">
+              <span th:text="${coheads}"></span>
+              </li>
           </p>
         </section>
       </main>

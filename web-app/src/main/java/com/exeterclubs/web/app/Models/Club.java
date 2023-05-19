@@ -1,20 +1,20 @@
 package com.exeterclubs.web.app.Models;
 
-import java.util.UUID;
+import java.util.List;
 
 public class Club {
 	private String name;
 	private boolean approved;
 	private String description;
-	private UUID[] heads;
-	private UUID[] members;
+	private List<String> heads;
+	private List<String> members;
 	//public Announcements[] announcements;
 	//public Date[] meetingTimes;
 	private String id;
 	
 	public Club() { }
 
-	public Club(String name, boolean approved, String description, UUID[] heads, UUID[] members, String id) {
+	public Club(String name, boolean approved, String description, List<String> heads, List<String> members, String id) {
 		this.name = name;
         this.approved = approved;
         this.description = description;
@@ -50,20 +50,28 @@ public class Club {
 		this.description = description;
 	}
 
-	public UUID[] getHeads() {
+	public List<String> getHeads() {
 		return heads;
 	}
 
-	public void setHeads(UUID[] heads) {
+	public void setHeads(List<String> heads) {
 		this.heads = heads;
 	}
 
-	public UUID[] getMembers() {
+	public void addHead(String head) {
+		this.heads.add(head);
+	}
+
+	public List<String> getMembers() {
 		return members;
 	}
 
-	public void setMembers(UUID[] members) {
+	public void setMembers(List<String> members) {
 		this.members = members;
+	}
+
+	public void addMember(String member) {
+		this.members.add(member);
 	}
 
 	/*public Announcements[] getAnnouncements() {

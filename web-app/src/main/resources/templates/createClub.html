@@ -13,7 +13,18 @@
       <header>
         <h1>Create your club</h1>
       </header>
-      <main></main>
+      <main>
+        <form th:action="@{/clubs/create}" method="post" th:object="${club}">
+          <h2>Create Club</h2>
+          <label>Name</label>
+          <input type="text" th:field="*{name}" required>
+          <label>Description:</label>
+          <input type="text" th:field="*{description}" required>
+          <label>Other Cohead Emails:</label>
+          <input type="text" th:field="*{heads}">
+          <button type="submit">Create</button>
+      </form>
+      </main>
       <footer>
         <p>&copy; ExeterClubs 2023</p>
       </footer>
