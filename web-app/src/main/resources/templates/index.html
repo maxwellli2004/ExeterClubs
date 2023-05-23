@@ -3,88 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
-    <script th:src="@{/js/script.js}"></script> 
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <script th:src="@{/js/script.js}"></script>
     <title>ExeterClubs Calendar</title>
   </head>
   <body>
     <div th:insert="navbar :: nav-bar"></div>
-    <!--date popup-->
-    <div class="date-popup" id="dateForm">
-      <div class="dateForm-container">
-        <h2>Events:</h2>
-        <div>
-          <a href="./eventPage.html">hi</a>
-        </div>
-        <div>
-          <a href="./eventPage.html">hi</a>
-        </div>
-        <div>
-          <a href="./eventPage.html">hi</a>
-        </div>
-        <div>
-          <a href="./eventPage.html">hi</a>
-        </div>
-        <button type="button" class="btn cancel" onclick="closeDate()">
-          Close
-        </button>
-      </div>
-    </div>
 
-    <!--calendar-->
-    <div class="month">
-      <ul>
-        <li class="prev">&#10094;</li>
-        <li class="next">&#10095;</li>
-        <li>May<br /><span style="font-size: 18px">2023</span></li>
-      </ul>
-    </div>
-
-    <ul class="weekdays">
-      <li>Mo</li>
-      <li>Tu</li>
-      <li>We</li>
-      <li>Th</li>
-      <li>Fr</li>
-      <li>Sa</li>
-      <li>Su</li>
-    </ul>
-
-    <ul class="days" onclick="popUp()">
-      <button class="openDate-button" onclick="openDate(this)">1</button>
-      <button class="openDate-button" onclick="openDate(this)">2</button>
-      <button class="openDate-button" onclick="openDate(this)">3</button>
-      <button class="openDate-button" onclick="openDate(this)">4</button>
-      <button class="openDate-button" onclick="openDate(this)">5</button>
-      <button class="openDate-button" onclick="openDate(this)">6</button>
-      <button class="openDate-button" onclick="openDate(this)">7</button>
-      <button class="openDate-button" onclick="openDate(this)">8</button>
-      <button class="openDate-button" onclick="openDate(this)">9</button>
-      <button class="openDate-button" onclick="openDate(this)">
-        <span class="active" onclick="openDate(this)">10</span>
-      </button>
-      <button class="openDate-button" onclick="openDate(this)">11</button>
-      <button class="openDate-button" onclick="openDate(this)">12</button>
-      <button class="openDate-button" onclick="openDate(this)">13</button>
-      <button class="openDate-button" onclick="openDate(this)">14</button>
-      <button class="openDate-button" onclick="openDate(this)">15</button>
-      <button class="openDate-button" onclick="openDate(this)">16</button>
-      <button class="openDate-button" onclick="openDate(this)">17</button>
-      <button class="openDate-button" onclick="openDate(this)">18</button>
-      <button class="openDate-button" onclick="openDate(this)">19</button>
-      <button class="openDate-button" onclick="openDate(this)">20</button>
-      <button class="openDate-button" onclick="openDate(this)">21</button>
-      <button class="openDate-button" onclick="openDate(this)">22</button>
-      <button class="openDate-button" onclick="openDate(this)">23</button>
-      <button class="openDate-button" onclick="openDate(this)">24</button>
-      <button class="openDate-button" onclick="openDate(this)">25</button>
-      <button class="openDate-button" onclick="openDate(this)">26</button>
-      <button class="openDate-button" onclick="openDate(this)">27</button>
-      <button class="openDate-button" onclick="openDate(this)">28</button>
-      <button class="openDate-button" onclick="openDate(this)">29</button>
-      <button class="openDate-button" onclick="openDate(this)">30</button>
-      <button class="openDate-button" onclick="openDate(this)">31</button>
-    </ul>
+    <!--calendar imbed-->
+    <div th:insert="calendar :: calendar"></div>
 
     <footer class="mainFooter">
       <p>&copy; ExeterClubs 2023</p>
