@@ -1,6 +1,6 @@
 /* add some basic styles for the top bar menu */
 .top-bar {
-  background-color: rgb(120, 0, 0);
+  background-color: rgb(118, 0, 0);
   overflow: hidden;
   position: fixed;
   top: 0;
@@ -144,7 +144,7 @@ body {
   margin: 0px 0px 0px 0px;
 }
 
-.days button {
+.dateSquare {
   border-color: black;
   color: black;
   text-align: center;
@@ -154,15 +154,20 @@ body {
   width: 172.6px;
   cursor: pointer;
   height: 81px;
+  position: relative;
+  margin-bottom: 50px;
+  vertical-align: top;
 }
 
-.days button:hover {
-  color: #666;
+.eventLink {
+  z-index: 1;
+  display: inline-block;
+  float: right;
 }
 
 /* month header */
 .month {
-  padding: 70px 25px;
+  padding: 150px 25px 70px 25px;
   width: 100%;
   background-image: linear-gradient(rgb(136, 0, 0), rgb(70, 0, 0));
   text-align: center;
@@ -170,11 +175,14 @@ body {
 
 /* month list */
 .month ul {
+  width: 100%;
   margin: 0;
   padding: 0;
+  display: inline;
 }
 
 .month ul li {
+  display: inline;
   color: white;
   font-size: 20px;
   text-transform: uppercase;
@@ -432,41 +440,24 @@ a {
   position: fixed;
   bottom: 0;
   right: 15px;
-  z-index: 9;
+  z-index: 1;
 }
 
 .dateForm-container {
   max-width: 200px;
   padding: 10px;
   background-color: white;
+  position: absolute;
+  z-index: 1;
 }
 
-/* Full-width input fields */
-.dateForm-container input[type="text"],
-.dateForm-container input[type="password"] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-}
-
-/* Set a style for the submit/login button */
-.dateForm-container .cancel {
-  background-color: red;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 50%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  opacity: 0.8;
+.dateForm-container a {
+  float: right;
 }
 
 /* Add some hover effects to buttons */
 .dateForm-container .btn:hover,
-.openDate-button:hover {
+.dateSquare:hover {
   opacity: 1;
 }
 
@@ -498,4 +489,12 @@ a {
 #calendarIframe {
   display: block;
   margin: 0;
+}
+
+#signup {
+  margin: 7% 0% 0% 3%;
+}
+
+#signin {
+  margin: 7% 0% 0% 3%;
 }

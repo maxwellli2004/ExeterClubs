@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <script th:src="@{/js/script.js}"></script>
+    <title>ExeterClubs Calendar</title>
+  </head>
+
+  <body>
+    <!--calendar-->
+    <div th:fragment="calendar">
+      <div class="month">
+        <ul>
+          <button onclick="prevMonth()">&#10094;</button>
+          <li id="dynamicMonth">
+            May 2023<span style="font-size: 18px"></span>
+          </li>
+          <button onclick="nextMonth()">&#10095;</button>
+        </ul>
+      </div>
+
+      <ul class="weekdays">
+        <li>Mo</li>
+        <li>Tu</li>
+        <li>We</li>
+        <li>Th</li>
+        <li>Fr</li>
+        <li>Sa</li>
+        <li>Su</li>
+      </ul>
+
+      <ul class="days" onclick="popUp()">
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          1
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          2
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          3
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          4
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          5
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          6
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          7
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          8
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          9
+        </div>
+        <div class="dateSquare">
+          <span class="active"
+            ><div th:insert="calendar :: dateStuff"></div>
+            10</span
+          >
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          11
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          12
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          13
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          14
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          15
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          16
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          17
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          18
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          19
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          20
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          21
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          22
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          23
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          24
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          25
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          26
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          27
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          28
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          29
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          30
+        </div>
+        <div class="dateSquare">
+          <div th:insert="calendar :: dateStuff"></div>
+          31
+        </div>
+      </ul>
+
+      <!--date popup-->
+      <div class="date-popup" id="dateForm">
+        <div th:fragment="dateStuff">
+          <div class="dateForm-container">
+            <div>
+              <href
+                class="dateEvent"
+                onclick="location.href='./eventPage.html'"
+              >
+                <span class="eventLink">Event 1</span>
+              </href>
+            </div>
+            <div>
+              <href
+                class="dateEvent"
+                onclick="location.href='./eventPage.html'"
+              >
+                <span class="eventLink">Event 2</span>
+              </href>
+            </div>
+            <div>
+              <href
+                class="dateEvent"
+                onclick="location.href='./eventPage.html'"
+              >
+                <span class="eventLink">Event 3</span>
+              </href>
+            </div>
+            <div>
+              <href
+                class="dateEvent"
+                onclick="location.href='./eventPage.html'"
+              >
+                <span class="eventLink">Event 4</span>
+              </href>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
